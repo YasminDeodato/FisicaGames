@@ -28,7 +28,6 @@ def name_to_number(name):
 
     return number;
 
-
 def number_to_name(number):
     name = "";
     for i in range(5):
@@ -36,7 +35,6 @@ def number_to_name(number):
             name = options[i];
 
     return name;
-
 
 def rpsls(player_choice):
     # imprima uma linha em branco para separar jogos consecutivos
@@ -85,7 +83,6 @@ def input_handler(input):
     else:
         # input is not valid
         print("Jogada Invalida! Tente Novamente!")
-
 
 # Create a frame and assign callbacks to event handlers
 # Crie um frame e assinale os callbacks para os event handlers
