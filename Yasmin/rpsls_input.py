@@ -3,7 +3,6 @@
 # A ideia chave desse programa é igualar as  strings
 # "rock", "paper", "scissors", "lizard", "Spock" aos números
 # como segue:
-#
 # 0 - rock
 # 1 - Spock
 # 2 - paper
