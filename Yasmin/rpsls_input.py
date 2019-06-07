@@ -1,6 +1,5 @@
 # Rock-paper-scissors-lizard-Spock template
 
-
 # A ideia chave desse programa é igualar as  strings
 # "rock", "paper", "scissors", "lizard", "Spock" aos números
 # como segue:
@@ -11,6 +10,7 @@
 # 3 - lizard
 # 4 - scissors
 import random
+import simplegui
 
 options = {
     0: "pedra",
@@ -42,6 +42,7 @@ def rpsls(player_choice):
     
     # imprima a mensagem com a escolha do jogador
     print("Jogador escolhe " + player_choice)
+    text = "Jogador escolhe " + player_choice
     
     # convera a escolha para número usando a função name_to_number()
     player_number = name_to_number(player_choice)
@@ -54,25 +55,47 @@ def rpsls(player_choice):
     
     # imprima a escolha do computador
     print("Computador escolhe " + comp_choice)
+    text += "\n Computador escolhe " + comp_choice
     
     # compute a diferença de comp_number e player_number módulo 5
     subtraction = comp_number - player_number
     
     # use if/elif/else para determinar o ganhador, imprima o vencedor
     if subtraction == 0:
-        result = "empate!"
-    elif subtraction == 1 or subtraction == 2 or subtraction == -3:
+        result = "Empate!"
+        text += "          Empate!"
+    elif subtraction == 1 or subtraction == 2 or subtraction == -3 or subtraction == -4:
         result = "Computador vence!";
+        text += "\n Computador vence!"
     else:
         result = "Jogador vence!";
+        text += "\n Jogador vence!"
     
     print(result)
+    label.set_text(text)
+    
+def input_handler(input):
+    input = input.lower()
+    if input == "pedra" or input == "papel" or input == "tesoura" or input == "lagarto" or input == "spock":
+         #input is valid
+        rpsls(input)
+    else:
+        #input is not valid
+        print("Jogada Invalida! Tente Novamente!")
+    
+# Create a frame and assign callbacks to event handlers
+# Crie um frame e assinale os callbacks para os event handlers
+frame = simplegui.create_frame("RPSLS", 300, 200)
+frame.add_input("Sua Jogada: ", input_handler, 100)
+label = frame.add_label('', 200)
 
-
+# Inicie a animação
+frame.start()
+    
 # teste seu código - ESTAS CHAMADAS DEVEM ESTAR PRESENTES NO CÓDIGO QUE
 # VOCÊS VÃO ME RETORNAR
-rpsls("pedra")
+"""/rpsls("pedra")
 rpsls("Spock")
 rpsls("papel")
 rpsls("lagarto")
-rpsls("tesoura")
+rpsls("tesoura")"""
