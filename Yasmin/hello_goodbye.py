@@ -1,3 +1,6 @@
+#Desafio 1: hello_goodbye.py
+#Proposta: ao clicar no botão hello ou goodbye mostra texto correspondente.
+#Disponível em: http://www.codeskulptor.org/#user46_ykK8brwZ9y_8.py
 import simplegui
 
 def print_hello():
