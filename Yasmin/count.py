@@ -1,3 +1,6 @@
+#Desafio 3: count.py
+#Proposta: manipular valores de count, através dos botões e mostrar na tela.
+#Disponível em: http://www.codeskulptor.org/#user46_Gz2VVaidPK_2.py
 import simplegui
 
 def reset():
