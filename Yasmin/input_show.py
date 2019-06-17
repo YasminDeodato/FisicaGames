@@ -1,3 +1,6 @@
+#Desafio 4: input_show.py
+#Proposta: mostrar na tela o texto obtido a partir de um campo de entrada.
+#Disponível em: http://www.codeskulptor.org/#user46_8K4x6ADIom_2.py
 import simplegui
 
 def get_input(input_text):
