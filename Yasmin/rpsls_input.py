@@ -1,3 +1,6 @@
+#Desafio 5: rpsls_input.py
+#Proposta: game rpsls com entrada do usuário validada a partir da interface.
+#Disponível em: http://www.codeskulptor.org/#user46_HET62s8d7F_5.py
 # Rock-paper-scissors-lizard-Spock template
 
 # A ideia chave desse programa é igualar as  strings
