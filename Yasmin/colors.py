@@ -1,3 +1,6 @@
+#Desafio 2: colors.py
+#Proposta: clicar nos botões azul e vermelho para manipular variável color e mostrar na tela.
+#Disponível em: http://www.codeskulptor.org/#user46_6fWg1Sa0oo_4.py
 import simplegui
 
 def set_red():
