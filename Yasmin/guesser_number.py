@@ -1,12 +1,12 @@
 #####################################################################
-# Jogo "Adivinhe o número!"
+# Jogo "Adivinhe o nÃºmero!"
 # criado por Yasmin Deodato
-# Disponível em: http://www.codeskulptor.org/#user46_acnbNNwPIQ_10.py
+# DisponÃ­vel em: http://www.codeskulptor.org/#user46_acnbNNwPIQ_12.py
 #####################################################################
 import simplegui
 import random
 
-# função de ajuda para iniciar um novo jogo
+# funÃ§Ã£o de ajuda para iniciar um novo jogo
 def new_game():
     global secret_number
     
@@ -20,7 +20,7 @@ def new_game():
 # define os manipuladores de evento 
 # para o painel de controle
 def range100():
-    # botão que muda o range para [0,100) e inicia novo jogo 
+    # botÃ£o que muda o range para [0,100) e inicia novo jogo 
     global range
     global attempt
     range = 100
@@ -28,7 +28,7 @@ def range100():
     new_game()
 
 def range1000():
-    # botão que muda o range para [0,1000) e inicia novo jogo     
+    # botÃ£o que muda o range para [0,1000) e inicia novo jogo     
     global range
     global attempt
     range = 1000
@@ -41,7 +41,7 @@ def input_guess(guess):
     #subtrai 1 palpite do numero atual de palpites
     attempt = attempt - 1
     
-    #converte a entrada do usuário para int
+    #converte a entrada do usuÃ¡rio para int
     guess = int(guess)
     
     if(attempt >= 0):
@@ -69,8 +69,8 @@ frame = simplegui.create_frame("Adivinhe o numero", 300, 200)
 
 # registre os manipuladores de evento para controlar os elementos e iniciar frame
 frame.add_input("Digite o palpite: ", input_guess, 100)
-frame.add_button("Range é \[0,100\)", range100)
-frame.add_button("Range é \[0,1000\)", range1000)
+frame.add_button("Range Ã© \[0,100\)", range100)
+frame.add_button("Range Ã© \[0,1000\)", range1000)
 frame.start()
 
 #iniciar jogo com range 100
