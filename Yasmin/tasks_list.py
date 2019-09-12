@@ -1,6 +1,6 @@
 # Listas
 # criado por Yasmin Deodato
-# disponível em: http://www.codeskulptor.org/#user46_wwkcQ1JTiQ_2.py
+# disponÃ­vel em: http://www.codeskulptor.org/#user46_wwkcQ1JTiQ_5.py
 #######################################################################
 import simplegui
 
@@ -12,18 +12,20 @@ def clearAll():
 # Handler for Task
 def newTask(task):
     global tasks
-    tasks.append(task)
+    if(not task in tasks):
+        tasks.append(task)
 
 def removeTask(input):
     global tasks
     
-    if(input.isdigit()):
-        #if input is a number
-        tasks.pop(int(input)-1)
-    else:
-        #if input is a task
-        if(input in tasks):
-            tasks.remove(input)
+    if(len(tasks) > 0):
+        if(input.isdigit()):
+            #if input is a number
+            tasks.pop(int(input)-1)
+        else:
+            #if input is a task
+            if(input in tasks):
+                tasks.remove(input)
     
 # Handler to write on canvas
 def draw(canvas):
