@@ -1,4 +1,4 @@
-# Listas
+# Lista de Tarefas
 # criado por Yasmin Deodato
 # disponível em: http://www.codeskulptor.org/#user46_wwkcQ1JTiQ_5.py
 #######################################################################
