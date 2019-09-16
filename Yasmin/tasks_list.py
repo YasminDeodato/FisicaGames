@@ -1,6 +1,6 @@
-# Lista de Tarefas
+# Listas
 # criado por Yasmin Deodato
-# disponível em: http://www.codeskulptor.org/#user46_wwkcQ1JTiQ_5.py
+# disponível em: http://www.codeskulptor.org/#user46_wwkcQ1JTiQ_6.py
 #######################################################################
 import simplegui
 
@@ -20,8 +20,11 @@ def removeTask(input):
     
     if(len(tasks) > 0):
         if(input.isdigit()):
+            input = int(input)
             #if input is a number
-            tasks.pop(int(input)-1)
+            if(input <= len(tasks)):
+                #if input is a valid number
+                tasks.pop(input-1)
         else:
             #if input is a task
             if(input in tasks):
