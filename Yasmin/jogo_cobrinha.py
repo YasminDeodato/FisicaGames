@@ -1,6 +1,6 @@
 # Jogo da Cobrinha
 # Criado por Yasmin Deodato
-# Disponível em: http://www.codeskulptor.org/#user46_xuO71DPRdk_14.py
+# Disponível em: http://www.codeskulptor.org/#user46_xTrdhFy2r3_1.py
 ####################################################################
 import simplegui
 import random
@@ -18,11 +18,10 @@ BOLA_RAIO = 12
 cabeca = [LARGURA/2, ALTURA/2]
 corpo = []
 
-jogo = 'true'
+jogo = True
 mensagem = ''
 pontuacao = 0
 
-click = 0
 const = 5
 vel = [0, 4]
 
@@ -39,7 +38,6 @@ def iniciar():
     mensagem = ''
     pontuacao = 0
     
-    click = 0
     const = 5
     vel = [0, 0]
     
@@ -58,7 +56,7 @@ def comidaPosicao():
     
 # Draw handler 
 def draw(canvas):
-    global cabeca, corpo, cobra, comida_pos, pontuacao, mensagem, vel, click
+    global cabeca, corpo, cobra, comida_pos, pontuacao, mensagem, vel
          
     if jogo == True:
         # verifica se há colisão
@@ -71,13 +69,13 @@ def draw(canvas):
         if corpo: 
             # move os gomos em ordem reversa
             for index in range(len(corpo) - 1, 0, -1):                        
-                        x = corpo[index - 1][0] - BOLA_RAIO * vel[0] 
-                        y = corpo[index - 1][1] - BOLA_RAIO * vel[1]  
-                        corpo[index] = [x, y] 
+                        x = corpo[index - 1][0] - 2 * BOLA_RAIO * vel[0]
+                        y = corpo[index - 1][1] - 2 * BOLA_RAIO * vel[1]
+                        corpo[index] = [x, y]
                         
             # move o primeiro segmento do corpo p/ posicao da cabeca 
             if len(corpo) > 0:
-                corpo[0] = [cabeca[0] - BOLA_RAIO * vel[0], cabeca[1] -  BOLA_RAIO * vel[1]]
+                corpo[0] = [cabeca[0] - 2 * BOLA_RAIO * vel[0], cabeca[1] - 2 * BOLA_RAIO * vel[1]]
         
         # atualiza a posição da cabeça da cobra
         mover()
@@ -92,17 +90,24 @@ def draw(canvas):
     # desenha o corpo da cobra
     if corpo:
         for gomo in corpo:
-            canvas.draw_circle(gomo, 10, 1, "White", "White")
+            canvas.draw_circle(gomo, BOLA_RAIO, 1, "White", "White")
            
     # desenha a cabeça da cobra
     canvas.draw_circle(cabeca, BOLA_RAIO, 1, "Green", "Green")
         
     # desenha a comida
     canvas.draw_circle(comida_pos, COMIDA_RAIO, 1, "red", "red")
+
+# Move a cabeça da cobra
+def mover():
+    global cabeca, corpo, vel   
         
+    cabeca[0] += vel[0]
+    cabeca[1] += vel[1]
+    
 # Verifica se a cobra comeu a comida
 def comeuComida():
-    global cabeca, corpo, click, comida_pos, pontuacao, const
+    global cabeca, corpo, comida_pos, pontuacao, const
     
     if len(corpo) < 1:
         gomo_anterior = cabeca
@@ -112,15 +117,15 @@ def comeuComida():
     # calcula a distancia entre a cabeça da cobra e a comida
     distancia = math.sqrt(((cabeca[0]-comida_pos[0])**2)+((cabeca[1]-comida_pos[1])**2))   
     
-    if distancia <= 5:
-        click += 1    
-        # Adiciona um novo gomo no corpo da cobra
+    # se a cobra tangencia a comida
+    if distancia <= BOLA_RAIO + COMIDA_RAIO:
+        # adiciona um novo gomo no corpo da cobra
         corpo.append([gomo_anterior[0] + 2 * BOLA_RAIO, gomo_anterior[1] + 2 * BOLA_RAIO])
 
-        # Atualiza a posição da comida
+        # atualiza a posição da comida
         posicaoComida()
         
-        # Atualiza a pontuação
+        # atualiza a pontuação
         pontuacao += 10
         
     
@@ -155,18 +160,10 @@ def colisao():
     if primeiro_gomo[0] == ultimo_gomo[0] and primeiro_gomo[1] == ultimo_gomo[1] - BOLA_RAIO:
         jogo = False
     
+    # atualiza mensagem
     if jogo == False:
         mensagem = 'Fim de Jogo'
 
-        
-# Move a cabeça da cobra
-def mover():
-    global cabeca, corpo, vel   
-        
-    cabeca[0] += vel[0]
-    cabeca[1] += vel[1]   
-   
-        
 # Evento do teclado
 def keydown(key):
     global vel, const
